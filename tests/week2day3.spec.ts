@@ -43,7 +43,7 @@ await page.locator("//input[@value='Create Lead']").click();
 
 
 
-test.only("nth method update", async({page})=>
+test("nth method update", async({page})=>
 
 {
 
