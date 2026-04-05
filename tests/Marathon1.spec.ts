@@ -28,11 +28,13 @@ await page.locator("//li//span/span[text()='10:40 PM']").click();
 await page.locator("//button[@class='p-button p-component sc-hjsuWn kDwaXw bgColor filter-btn']/span[text()='Book']").click();
 //accept popup
 await page.locator("//button[text()='Accept']").click();
+
+
 // Select any available seat from the seating layout.
-await page.locator("//TR[5]/TD[23]").click()
+await page.locator("//tr[5]/td[4]").click()
 // Verify the selected seat information is displayed.
 const text=await page.locator("//div[@class='seat-number']/p").innerText();
-expect(text,"F22");
+expect(text,"F3");
  //Verify the total ticket amount is displayed.
 const total=await page.locator("//div[@class='grand-prices']/h6").innerText();
 expect(total,"218.02");

@@ -33,6 +33,7 @@ await page.locator("//div[text()='UK 10.5 - EU 45']").click();
 await page.locator("//span[text()='ADD TO CART']").click();
 //verify product addded to cart
 await page.locator("//h3[text()='Product added to cart']").isVisible();
+await page.waitForTimeout(4000);
 await page.locator("//p[text()='Cart']").click();
 //verify the price of the product in the cart
 const total=await page.locator("//p[text()='₹2,499']").innerText();
