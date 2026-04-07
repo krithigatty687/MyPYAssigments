@@ -1,5 +1,4 @@
 import {test,expect} from '@playwright/test'
-import { TIMEOUT } from 'node:dns';
 
 test("Test visiblity", async({page})=>
 {
