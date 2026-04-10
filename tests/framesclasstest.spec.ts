@@ -7,7 +7,7 @@ const message=await page.frameLocator('//iframe[@src="default.xhtml"]').locator(
 expect(message,"Hurray! You Clicked Me.");
 const allframes= page.frames();
 const framescount=allframes.length;
-console.log(framescount);
+console.log("total fames count :",framescount);
 //nested frames
 await page.frameLocator("//iframe[@src='page.xhtml']").frameLocator("//iframe[@src='framebutton.xhtml']")
 .locator("#Click").click();
