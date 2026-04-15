@@ -1,5 +1,5 @@
 type paymentmethod='UPI'|"Creditcard"|"Paypal"
-void function makepayment(paymenttype:paymentmethod)
+ function makepayment(paymenttype:paymentmethod):void 
 {
 
     console.log(paymenttype);
