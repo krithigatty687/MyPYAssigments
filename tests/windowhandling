@@ -1,0 +1,35 @@
+import {test} from "@playwright/test"
+
+test('handling multiple windows',async({page,context})=>{
+
+await page.goto("https://www.leafground.com/window.xhtml")
+
+/*const [childPage] = await Promise.all([context.waitForEvent('page'),page.locator(`//div[text()="POCO C71 (Desert Gold, 
+64 GB)"]`).click()])  */
+
+const [parentPage]=await Promise.all([context.waitForEvent('page'), page.locator('//span[text()="Open Multiple"]').click()])
+
+//[parentPage] =parent page, ch1, ch2
+
+const count=parentPage.context().pages() //array of all pages
+console.log(count.length); //total no of pages=3
+let dashboard: any
+let webtable:any
+
+for(let i=0;i<count.length;i++){
+
+    await page.waitForLoadState('domcontentloaded')
+
+    const title=await count[i].title()
+    console.log(title); //window,WebTable, Dashboard
+
+    if(title==='Dashboard'){
+     dashboard=count[i]
+     await dashboard.locator('//input[@id="email"]').fill('admin@testleaf.com')
+}else if(title==="Web Table"){
+    webtable=count[i]
+ await webtable.locator('//input[@placeholder="Search"]').fill('Russia')
+}
+}
+
+})
